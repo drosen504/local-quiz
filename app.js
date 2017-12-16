@@ -50,8 +50,8 @@ const handleStart = function() {
     $('.intro').on('click', '.js-start-button', event => {
         event.preventDefault();
         console.log('handleStart ran');     
-        store = defaultStore;
         store.currentQuestion = 0;
+        store.currentView = 'question';
         render();
     });
 };
@@ -96,8 +96,15 @@ const render = function() {
            
 };
 
-
 //HTML Templates
+const questionTemplate = function(answer) {
+    return `
+      <li class="answer-item">
+        <input type="radio" name="answers" value="${answer}" />
+        <span class="answer-text">${answer}</span>
+      </li>
+    `;
+  };
 
 //Etc
 
