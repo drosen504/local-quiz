@@ -97,14 +97,37 @@ const render = function() {
 };
 
 //HTML Templates
-const questionTemplate = function(answer) {
+const questionTemplate = function(question) {
+    const options = question.answers
+        .map((answer, index) => generateAnswerItemHtml(answer, index))
+        .join('');
     return `
-      <li class="answer-item">
-        <input type="radio" name="answers" value="${answer}" />
-        <span class="answer-text">${answer}</span>
-      </li>
+      <form>
+        <fieldset>
+          <legend class="question-text">${QUESTIONS[defaultStore.currentQuestion].text}</legend>
+            ${answers}
+            <button type="submit">Submit</button>
+        </fieldset>
+      </form>
     `;
-  };
+};
+
+// const optionTemplate = function(answer) {
+//     return `
+//       <li class="answer-item">
+//         <input type="radio" name="answers" value="${answer}" />
+//         <span class="answer-text">${answer}</span>
+//       </li>
+//     `;
+// };
+
+// const feedbackTemplate = function(feedback) {
+//     return `
+//       <p>${feedback}</p>
+//       <button class="continue js-continue">Continue</button>
+//     `;
+// };
+
 
 //Etc
 
