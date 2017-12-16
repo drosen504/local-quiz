@@ -10,14 +10,21 @@
 <body>
     <h1 role="banner" class="title">Random Stuff Quiz!!!</h1>
     <main role="main">
-        <div class="intro js-intro">
-        <p>Click button to start</p>
-        <button class="start js-start-button">Start it!</button>
-        </div>
-
-        <div class="question js-question"></div>
-
-        <div class="feedback js-feedback"></div>
+        <section id="start-page">
+            <div class="intro js-intro">
+            <p>Click button to start</p>
+            <button class="start js-start-button">Start it!</button>
+            </div>
+        </section>
+        
+        <section id="quiz-form">
+            
+            <div class="q-num"></div>
+            <div class="question js-question"></div>
+            <div class="options js-options"></div>
+            <div class="feedback js-feedback"></div>
+        
+        </section>
 
         <div class="results js-results">
             <p>Try again?</p>
