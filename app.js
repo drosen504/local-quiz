@@ -53,7 +53,7 @@ const handleStart = function() {
         store.currentQuestion = 0;
         store.currentView = 'question';
         renderQuiz();
-        render();
+        // render();
     });
 };
 
@@ -102,6 +102,7 @@ function generateQuiz() {
     $('.js-question').html(`<h2 class ="q-num"></h2>
     <form id="quiz-form">
         <p class="question"</p>
+        <p class="answers"</p>
             <input id='answer' class="answer-button button" type="submit" value="Select">
         </form>
     
@@ -114,6 +115,36 @@ function generateQNum() {
     ${defaultStore.currentQuestion + 1} of 5
     `);
 }
+
+function generateQuestion() {
+    console.log('generateQuestions firing');
+    $('.question').html(`
+    ${QUESTIONS[defaultStore.currentQuestion].text}<br>
+    `);
+}
+
+function generateAnswers() {
+    console.log('generateAnswers fired');
+    let answerHtml = (QUESTIONS[defaultStore.currentQuestion].options
+        .map((item,index )=>
+            `<input type="radio" value="${item.id}" id="${index}" name="answer" required />
+          <label for="${item.id}">${item.answer}</label><br>`
+        )
+        .join('') 
+    );
+    $('.question').append(answerHtml);
+}
+// $('.answers').html(
+// <input type="radio" id="choice1" name="answer" value="0"></input>
+// <label for="choice1">${QUESTIONS[defaultStore.currentQuestion].options[0]}</label><br>
+// <input type="radio" id="choice2" name="answer" value="1"></input>
+// <label for="choice1">${QUESTIONS[defaultStore.currentQuestion].options[1]}</label><br>
+// <input type="radio" id="choice3" name="answer" value="2"></input>
+// <label for="choice1">${QUESTIONS[defaultStore.currentQuestion].options[2]}</label><br>
+// <input type="radio" id="choice4" name="answer" value="3"></input>
+// <label for="choice1">${QUESTIONS[defaultStore.currentQuestion].options[3]}</label>);
+// }
+
 
 // const optionTemplate = function(answer) {
 //     return 
@@ -145,8 +176,8 @@ function generateQNum() {
 function renderQuiz() {
     generateQuiz();
     generateQNum();
-    // generateQuestion();
-    // generateAnswer();
+    generateQuestion();
+    generateAnswers();
 
 }
 //after DOM loads
