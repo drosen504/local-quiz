@@ -47,14 +47,28 @@ const defaultStore = function() {
 
 //Event Listeners/Handlers
 const handleStart = function() {
-    $('.intro').on('click', '.js-click-start', event => {
+    $('.intro').on('click', '.js-start-button', event => {
         event.preventDefault();
+        console.log('handleStart ran');     
         store = defaultStore;
         store.currentQuestion = 0;
         render();
-}
+    });
+};
+
 
 //Renderer
+const hideClasses = function(){
+    $('.js-intro').hide();
+    $('.js-question').hide();
+    $('.js-feedback').hide();
+    $('.js-results').hide();
+
+};
+const render = function() {
+    
+};
+
 
 //HTML Templates
 
@@ -63,8 +77,9 @@ const handleStart = function() {
 //after DOM loads
 $(function() {
     render();
-
+    handleStart();
     defaultStore();
+    hideClasses();
 
 
 });
