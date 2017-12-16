@@ -42,7 +42,7 @@ const defaultStore = function() {
         feedback: null
     };
 };
-
+let store = defaultStore;
 //Event Listeners
 
 //Event Listeners/Handlers
@@ -57,16 +57,43 @@ const handleStart = function() {
 };
 
 
-//Renderer
-const hideClasses = function(){
-    $('.js-intro').hide();
-    $('.js-question').hide();
-    $('.js-feedback').hide();
-    $('.js-results').hide();
+//Render-related Functions
+// const hideClasses = function(){
+//     $('.js-intro').hide();
+//     $('.js-question').hide();
+//     $('.js-feedback').hide();
+//     $('.js-results').hide();
+// };
 
-};
 const render = function() {
-    
+    // hideClasses();
+    console.log('renderer ran!');
+
+    if (defaultStore.currentView === 'start'){
+        $('.js-intro').show();
+        $('.js-question').hide();
+        $('.js-feedback').hide();
+        $('.js-results').hide();
+    }
+    else if (defaultStore.currentView === 'question'){
+        $('.js-question').show();
+        $('.js-intro').hide();
+        $('.js-feedback').hide();
+        $('.js-results').hide();
+    }
+    else if (defaultStore.currentView === 'feedback'){
+        $('.js-feedback').show();
+        $('.js-intro').hide();
+        $('.js-question').hide();
+        $('.js-results').hide();
+    }
+    else if (defaultStore.currentView === 'results'){
+        $('.js-results').show();
+        $('.js-intro').hide();
+        $('.js-question').hide();
+        $('.js-feedback').hide();
+    }
+           
 };
 
 
@@ -79,7 +106,9 @@ $(function() {
     render();
     handleStart();
     defaultStore();
-    hideClasses();
+    
 
 
 });
+
+
