@@ -96,21 +96,23 @@ const render = function() {
            
 };
 
-//HTML Templates
-const questionTemplate = function(question) {
-    const options = question.answers
-        .map((answer, index) => generateAnswerItemHtml(answer, index))
-        .join('');
-    return `
-      <form>
-        <fieldset>
-          <legend class="question-text">${QUESTIONS[defaultStore.currentQuestion].text}</legend>
-            ${answers}
-            <button type="submit">Submit</button>
-        </fieldset>
-      </form>
-    `;
-};
+//HTML Renderer
+function generateQuiz() {
+    $('.js-question').html(`<h2 class ="q-num"></h2>
+    <form id="quiz-form">
+        <p class="question"</p>
+            <input id='answer' class="answer-button button" type="submit" value="Select">
+        </form>
+    
+    <p>Current Score</p>
+    <p class="current-score"></p>`);
+}
+
+function generateQNum() {
+    $('.q-num').html(`
+    ${defaultStore.currentQuestion + 1}
+    `);
+}
 
 // const optionTemplate = function(answer) {
 //     return `
@@ -130,6 +132,14 @@ const questionTemplate = function(question) {
 
 
 //Etc
+// function updateQuestion() {
+//     if (STORE.currentQuestion < questions.length - 1) {
+//         STORE.currentQuestion++;
+//         return STORE.currentQuestion;
+//     } else {
+//         return null;
+//     }
+// } 
 
 //after DOM loads
 $(function() {
