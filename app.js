@@ -53,7 +53,7 @@ const handleStart = function() {
         store.currentQuestion = 0;
         store.currentView = 'question';
         renderQuiz();
-        // render();
+        render();
     });
 };
 
@@ -171,7 +171,7 @@ function generateAnswers() {
 // } 
 
 function renderQuiz() {
-    generateQuiz();
+    // generateQuiz();
     generateQNum();
     generateQuestion();
     generateAnswers();
