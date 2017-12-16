@@ -33,3 +33,21 @@ const QUESTIONS = [
         correctAnswerIndex: 'In water'
     }
 ];
+
+const defaultStore = function() {
+    return {
+        currentView: 'start',
+        currentQuestion: null,
+        userAnswers: [],
+        feedback: null
+    };
+};
+
+
+$(function() {
+    renderIntro();
+    handleClickStart();
+    handleQuestionSubmit();
+    handleNextQuestion();
+
+});
