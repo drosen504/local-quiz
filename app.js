@@ -52,6 +52,7 @@ const handleStart = function() {
         console.log('handleStart ran');     
         store.currentQuestion = 0;
         store.currentView = 'question';
+        renderQuiz();
         render();
     });
 };
@@ -109,25 +110,25 @@ function generateQuiz() {
 }
 
 function generateQNum() {
-    $('.q-num').html(`
-    ${defaultStore.currentQuestion + 1}
+    $('.q-num').html(` Question
+    ${defaultStore.currentQuestion + 1} of 5
     `);
 }
 
 // const optionTemplate = function(answer) {
-//     return `
+//     return 
 //       <li class="answer-item">
 //         <input type="radio" name="answers" value="${answer}" />
 //         <span class="answer-text">${answer}</span>
 //       </li>
-//     `;
+//     ;
 // };
 
 // const feedbackTemplate = function(feedback) {
-//     return `
+//     return 
 //       <p>${feedback}</p>
 //       <button class="continue js-continue">Continue</button>
-//     `;
+//     ;
 // };
 
 
@@ -141,9 +142,16 @@ function generateQNum() {
 //     }
 // } 
 
+function renderQuiz() {
+    generateQuiz();
+    generateQNum();
+    // generateQuestion();
+    // generateAnswer();
+
+}
 //after DOM loads
 $(function() {
-    render();
+    // render();
     handleStart();
     defaultStore();
     
