@@ -7,8 +7,26 @@
     <title>Dan's Quiz</title>
 </head>
 <body>
-    <h1>Random Stuff Quiz</h1>
-    
+    <h1 role="banner">Random Stuff Quiz!!!</h1>
+    <main role="main">
+        <div class="intro js-intro">
+        <p>Click button to start</p>
+        <button class="start js-start-button">Start it!</button>
+        </div>
+
+        <div class="question js-question"></div>
+
+        <div class="feedback js-feedback"></div>
+
+        <div class="results js-results"></div>
+        
+        <p>Try again?</p>
+        <button class="start js-start-button">Try Again!</button>
+    </main>    
+
     <footer class="score js-score"></footer>
-</body>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="app.js"></script>
+ </body>
 </html>
