@@ -69,36 +69,30 @@ const handleSubmission = function() {
 
 
 //Render-related Functions
-// const hideClasses = function(){
-//     $('.js-intro').hide();
-//     $('.js-question').hide();
-//     $('.js-feedback').hide();
-//     $('.js-results').hide();
-// };
 
 const render = function() {
     // hideClasses();
     console.log('renderer ran!');
 
-    if (defaultStore.currentView === 'start'){
+    if (store.currentView === 'start'){
         $('.js-intro').show();
         $('.js-question').hide();
         $('.js-feedback').hide();
         $('.js-results').hide();
     }
-    else if (defaultStore.currentView === 'question'){
+    else if (store.currentView === 'question'){
         $('.js-question').show();
         $('.js-intro').hide();
         $('.js-feedback').hide();
         $('.js-results').hide();
     }
-    else if (defaultStore.currentView === 'feedback'){
+    else if (store.currentView === 'feedback'){
         $('.js-feedback').show();
         $('.js-intro').hide();
         $('.js-question').hide();
         $('.js-results').hide();
     }
-    else if (defaultStore.currentView === 'results'){
+    else if (store.currentView === 'results'){
         $('.js-results').show();
         $('.js-intro').hide();
         $('.js-question').hide();
@@ -110,14 +104,14 @@ const render = function() {
 //HTML Renderer
 function generateQNum() {
     $('.q-num').html(` Question
-    ${defaultStore.currentQuestion + 1} of 5
+    ${store.currentQuestion + 1} of 5
     `);
 }
 
 function generateQuestion() {
     console.log('generateQuestions firing');
     $('.question').html(`
-    ${QUESTIONS[defaultStore.currentQuestion].text}<br>
+    ${QUESTIONS[store.currentQuestion].text}<br>
     `);
 }
 
@@ -126,13 +120,13 @@ function generateAnswers() {
     $('.options').html(`
     <form id="js-option-form">
         <input type="radio" id="choice1" name="answer" value="0" required></input>
-        <label for="choice1">${QUESTIONS[defaultStore.currentQuestion].options[0]}</label><br>
+        <label for="choice1">${QUESTIONS[store.currentQuestion].options[0]}</label><br>
         <input type="radio" id="choice2" name="answer" value="1"></input>
-        <label for="choice1">${QUESTIONS[defaultStore.currentQuestion].options[1]}</label><br>
+        <label for="choice1">${QUESTIONS[store.currentQuestion].options[1]}</label><br>
         <input type="radio" id="choice3" name="answer" value="2"></input>
-        <label for="choice1">${QUESTIONS[defaultStore.currentQuestion].options[2]}</label><br>
+        <label for="choice1">${QUESTIONS[store.currentQuestion].options[2]}</label><br>
         <input type="radio" id="choice4" name="answer" value="3"></input>
-        <label for="choice1">${QUESTIONS[defaultStore.currentQuestion].options[3]}</label><br>
+        <label for="choice1">${QUESTIONS[store.currentQuestion].options[3]}</label><br>
 
         <input type="submit" name="Submit" value="Submit!"></input>
     </form>`);
@@ -186,5 +180,12 @@ $(function() {
 
 
 });
-
+$(() => {
+    render();
+  
+    $('.js-intro, .js-outro').on('click', '.js-start', handleStart);
+    $('.js-question').on('submit', handleSubmitAnswer);
+    $('.js-question-feedback').on('click', '.js-continue', handleNextQuestion);
+  });
+  
 
