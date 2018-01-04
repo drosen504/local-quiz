@@ -60,12 +60,24 @@ const handleStart = function() {
 const handleSubmission = function() {
     $('.js-quiz-form').on('submit', '#js-option-form', event => {
         event.preventDefault();
-        const userAnswer = $('input:checked').val();
-        console.log(`user chose ${userAnswer}`);
-        
+        const selection = $('input:checked').val();
+        console.log(`user chose ${selection}`);
+        STORE.userAnswer = selection;
+
+        if (STORE.userAnswer === QUESTIONS[STORE.currentQuestion].correctAns) {
+            STORE.feedback = 'That is correct!';
+        }
+        else {
+            STORE.feedback = `Sorry. The correct answer was: ${QUESTIONS[STORE.currentQuestion].correctAns}`;
+        }
+        STORE.currentView = 'feedback';
+        generateFeedback();
+        render();
     });
-    
+          
 };
+    
+
 
 
 //Render-related Functions
@@ -89,7 +101,7 @@ const render = function() {
     else if (STORE.currentView === 'feedback'){
         $('.js-feedback').show();
         $('.js-intro').hide();
-        $('.js-question').hide();
+        $('.js-question').show();
         $('.js-results').hide();
     }
     else if (STORE.currentView === 'results'){
@@ -102,11 +114,16 @@ const render = function() {
 };
 
 //HTML Renderer
-function generateQNum() {
+// function generateQNum() {
+//     $('.q-num').html(` Question
+//     ${STORE.currentQuestion + 1} of 5
+//     `);
+// }
+const qNum = function() {
     $('.q-num').html(` Question
     ${STORE.currentQuestion + 1} of 5
     `);
-}
+};
 
 function generateQuestion() {
     console.log('generateQuestions firing');
@@ -131,6 +148,14 @@ function generateAnswers() {
         <input type="submit" name="Submit" value="Submit!"></input>
     </form>`);
 }
+
+const generateFeedback = function() {
+    $('.feedback').html(`
+    <p>${STORE.feedback}</p>
+    <button class="next-question">Next!</button>`);
+};
+
+
 
 
 // const optionTemplate = function(answer) {
@@ -163,7 +188,7 @@ function generateAnswers() {
 
 function renderQuiz() {
     console.log('renderQuiz ran');
-    generateQNum();
+    qNum();
     generateQuestion();
     generateAnswers();
     
