@@ -1,6 +1,5 @@
 'use strict';
 
-
 const QUESTIONS = [
     {
         qNum: 'Question 1 of 5',
@@ -39,11 +38,8 @@ const STORE = {
     currentQuestion: null,
     userAnswer: null,
     feedback: null,
-    userScore: 0
+    userScore: 0,
 };
-
-
-//Event Listeners
 
 //Event Listeners/Handlers
 const handleStart = function() {
@@ -52,6 +48,7 @@ const handleStart = function() {
         console.log('handleStart ran');     
         STORE.currentQuestion = 0;
         STORE.currentView = 'question';
+        STORE.userScore = 0;
         renderQuiz();
         render();
     });
@@ -67,7 +64,6 @@ const handleSubmission = function() {
         if (STORE.userAnswer === QUESTIONS[STORE.currentQuestion].correctAns) {
             STORE.feedback = 'That is correct!';
             STORE.userScore++;
-            
         }
         else {
             STORE.feedback = `Sorry. The correct answer was: ${QUESTIONS[STORE.currentQuestion].correctAns}`;
@@ -77,7 +73,6 @@ const handleSubmission = function() {
         generateScore();
         render();
     });
-          
 };
 
 const updateQuestion = function() {
@@ -95,6 +90,13 @@ const updateQuestion = function() {
             render();
             generateResults();
         }
+    });
+};
+
+//DOESN'T WORK YET*********************************
+const startOver = function() {
+    $('.js-results').on('click', function() {
+        handleStart();
     });
 };
     
@@ -132,12 +134,6 @@ const render = function() {
            
 };
 
-//HTML Renderer
-// function generateQNum() {
-//     $('.q-num').html(` Question
-//     ${STORE.currentQuestion + 1} of 5
-//     `);
-// }
 const qNum = function() {
     $('.q-num').html(` Question
     ${STORE.currentQuestion + 1} of 5
@@ -194,6 +190,7 @@ function renderQuiz() {
     generateQuestion();
     generateAnswers();
     updateQuestion();
+    startOver();
     
 }
 //after DOM loads
