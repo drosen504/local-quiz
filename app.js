@@ -1,5 +1,5 @@
 'use strict';
-/*global*/
+
 
 const QUESTIONS = [
     {
@@ -40,7 +40,8 @@ const defaultStore = function() {
         currentView: 'start',
         currentQuestion: null,
         userAnswers: [],
-        feedback: null
+        feedback: null,
+        userScore: 0
     };
 };
 let store = defaultStore;
@@ -173,19 +174,17 @@ function renderQuiz() {
 }
 //after DOM loads
 $(function() {
-    // render();
+    render();
     handleStart();
     handleSubmission();
-    
-
-
 });
-$(() => {
-    render();
+
+// $(() => {
+//     render();
   
-    $('.js-intro, .js-outro').on('click', '.js-start', handleStart);
-    $('.js-question').on('submit', handleSubmitAnswer);
-    $('.js-question-feedback').on('click', '.js-continue', handleNextQuestion);
-  });
+//     $('.js-intro, .js-outro').on('click', '.js-start', handleStart);
+//     $('.js-question').on('submit', handleSubmitAnswer);
+//     $('.js-question-feedback').on('click', '.js-continue', handleNextQuestion);
+// });
   
 
