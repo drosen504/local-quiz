@@ -34,17 +34,15 @@ const QUESTIONS = [
     }
 ];
 
-const defaultStore = function() {
-    console.log('defaultStore ran');
-    return {
-        currentView: 'start',
-        currentQuestion: null,
-        userAnswers: [],
-        feedback: null,
-        userScore: 0
-    };
+const STORE = {
+    currentView: 'start',
+    currentQuestion: null,
+    userAnswer: null,
+    feedback: null,
+    userScore: 0
 };
-let store = defaultStore;
+
+
 //Event Listeners
 
 //Event Listeners/Handlers
@@ -52,20 +50,21 @@ const handleStart = function() {
     $('.intro').on('click', '.js-start-button', event => {
         event.preventDefault();
         console.log('handleStart ran');     
-        store.currentQuestion = 0;
-        store.currentView = 'question';
-        defaultStore();
+        STORE.currentQuestion = 0;
+        STORE.currentView = 'question';
         renderQuiz();
         render();
     });
 };
 
 const handleSubmission = function() {
-    $('js-quiz-form').on('submit', '#js-option-form', event => {
+    $('.js-quiz-form').on('submit', '#js-option-form', event => {
         event.preventDefault();
         const userAnswer = $('input[name=answer]:checked').val();
         console.log(userAnswer);
+        
     });
+    
 };
 
 
@@ -75,25 +74,25 @@ const render = function() {
     // hideClasses();
     console.log('renderer ran!');
 
-    if (store.currentView === 'start'){
+    if (STORE.currentView === 'start'){
         $('.js-intro').show();
         $('.js-question').hide();
         $('.js-feedback').hide();
         $('.js-results').hide();
     }
-    else if (store.currentView === 'question'){
+    else if (STORE.currentView === 'question'){
         $('.js-question').show();
         $('.js-intro').hide();
         $('.js-feedback').hide();
         $('.js-results').hide();
     }
-    else if (store.currentView === 'feedback'){
+    else if (STORE.currentView === 'feedback'){
         $('.js-feedback').show();
         $('.js-intro').hide();
         $('.js-question').hide();
         $('.js-results').hide();
     }
-    else if (store.currentView === 'results'){
+    else if (STORE.currentView === 'results'){
         $('.js-results').show();
         $('.js-intro').hide();
         $('.js-question').hide();
@@ -105,14 +104,14 @@ const render = function() {
 //HTML Renderer
 function generateQNum() {
     $('.q-num').html(` Question
-    ${store.currentQuestion + 1} of 5
+    ${STORE.currentQuestion + 1} of 5
     `);
 }
 
 function generateQuestion() {
     console.log('generateQuestions firing');
     $('.question').html(`
-    ${QUESTIONS[store.currentQuestion].text}<br>
+    ${QUESTIONS[STORE.currentQuestion].text}<br>
     `);
 }
 
@@ -121,13 +120,13 @@ function generateAnswers() {
     $('.options').html(`
     <form id="js-option-form">
         <input type="radio" id="choice1" name="answer" value="0" required></input>
-        <label for="choice1">${QUESTIONS[store.currentQuestion].options[0]}</label><br>
+        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[0]}</label><br>
         <input type="radio" id="choice2" name="answer" value="1"></input>
-        <label for="choice1">${QUESTIONS[store.currentQuestion].options[1]}</label><br>
+        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[1]}</label><br>
         <input type="radio" id="choice3" name="answer" value="2"></input>
-        <label for="choice1">${QUESTIONS[store.currentQuestion].options[2]}</label><br>
+        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[2]}</label><br>
         <input type="radio" id="choice4" name="answer" value="3"></input>
-        <label for="choice1">${QUESTIONS[store.currentQuestion].options[3]}</label><br>
+        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[3]}</label><br>
 
         <input type="submit" name="Submit" value="Submit!"></input>
     </form>`);
@@ -165,12 +164,9 @@ function generateAnswers() {
 function renderQuiz() {
     console.log('renderQuiz ran');
     generateQNum();
-    console.log('QNum populated');
     generateQuestion();
-    console.log('question populated');
     generateAnswers();
-    console.log('generateAnswers ran');
-
+    
 }
 //after DOM loads
 $(function() {
