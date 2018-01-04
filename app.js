@@ -80,9 +80,19 @@ const handleSubmission = function() {
           
 };
 
-const loadNextQuestion = function() {
+const updateQuestion = function() {
     $('.js-feedback').on('click', '.next-question', function() {
         console.log('Next Question Clicked');
+        if (STORE.currentQuestion < QUESTIONS.length - 1) {
+            STORE.currentQuestion++;
+            STORE.currentView = 'question';
+            render();
+            qNum();
+            generateQuestion();
+            generateAnswers();
+        } else {
+            STORE.currentView = 'results';
+        }
     });
 };
     
@@ -169,15 +179,7 @@ const generateScore = function() {
     <p>Number correct: ${STORE.userScore}</p>`);
 };
 
-//Etc
-// function updateQuestion() {
-//     if (STORE.currentQuestion < questions.length - 1) {
-//         STORE.currentQuestion++;
-//         return STORE.currentQuestion;
-//     } else {
-//         return null;
-//     }
-// } 
+
 
 
 function renderQuiz() {
@@ -185,7 +187,7 @@ function renderQuiz() {
     qNum();
     generateQuestion();
     generateAnswers();
-    loadNextQuestion();
+    updateQuestion();
     
 }
 //after DOM loads
