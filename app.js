@@ -66,16 +66,23 @@ const handleSubmission = function() {
 
         if (STORE.userAnswer === QUESTIONS[STORE.currentQuestion].correctAns) {
             STORE.feedback = 'That is correct!';
+            STORE.userScore++;
+            
         }
         else {
             STORE.feedback = `Sorry. The correct answer was: ${QUESTIONS[STORE.currentQuestion].correctAns}`;
         }
         STORE.currentView = 'feedback';
         generateFeedback();
+        generateScore();
         render();
     });
           
 };
+
+// const loadNextQuestion = function() {
+//     $('.js-feedback').click()
+// }
     
 
 
@@ -88,12 +95,12 @@ const render = function() {
 
     if (STORE.currentView === 'start'){
         $('.js-intro').show();
-        $('.js-question').hide();
+        $('.js-quiz-form').hide();
         $('.js-feedback').hide();
         $('.js-results').hide();
     }
     else if (STORE.currentView === 'question'){
-        $('.js-question').show();
+        $('.js-quiz-form').show();
         $('.js-intro').hide();
         $('.js-feedback').hide();
         $('.js-results').hide();
@@ -101,13 +108,13 @@ const render = function() {
     else if (STORE.currentView === 'feedback'){
         $('.js-feedback').show();
         $('.js-intro').hide();
-        $('.js-question').show();
+        $('.js-quiz-form').show();
         $('.js-results').hide();
     }
     else if (STORE.currentView === 'results'){
         $('.js-results').show();
         $('.js-intro').hide();
-        $('.js-question').hide();
+        $('.js-quiz-form').hide();
         $('.js-feedback').hide();
     }
            
@@ -155,25 +162,10 @@ const generateFeedback = function() {
     <button class="next-question">Next!</button>`);
 };
 
-
-
-
-// const optionTemplate = function(answer) {
-//     return 
-//       <li class="answer-item">
-//         <input type="radio" name="answers" value="${answer}" />
-//         <span class="answer-text">${answer}</span>
-//       </li>
-//     ;
-// };
-
-// const feedbackTemplate = function(feedback) {
-//     return 
-//       <p>${feedback}</p>
-//       <button class="continue js-continue">Continue</button>
-//     ;
-// };
-
+const generateScore = function() {
+    $('.correct-tally').html(`
+    <p>Number correct: ${STORE.userScore}</p>`);
+};
 
 //Etc
 // function updateQuestion() {
