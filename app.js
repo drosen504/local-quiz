@@ -80,9 +80,11 @@ const handleSubmission = function() {
           
 };
 
-// const loadNextQuestion = function() {
-//     $('.js-feedback').click()
-// }
+const loadNextQuestion = function() {
+    $('.js-feedback').on('click', '.next-question', function() {
+        console.log('Next Question Clicked');
+    });
+};
     
 
 
@@ -151,7 +153,7 @@ function generateAnswers() {
         <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[2]}</label><br>
         <input type="radio" id="choice4" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[3]}"></input>
         <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[3]}</label><br>
-
+        <br>
         <input type="submit" name="Submit" value="Submit!"></input>
     </form>`);
 }
@@ -183,6 +185,7 @@ function renderQuiz() {
     qNum();
     generateQuestion();
     generateAnswers();
+    loadNextQuestion();
     
 }
 //after DOM loads
