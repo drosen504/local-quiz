@@ -47,6 +47,7 @@ const handleStart = function() {
   STORE.currentQuestion = 0;
   STORE.currentView = 'question';
   STORE.userScore = 0;
+  console.log(STORE.currentQuestion);
   renderQuiz();
   render();
 };
@@ -71,6 +72,7 @@ const handleSubmission = function() {
 };
 
 const updateQuestion = function() {
+  console.log('updateQuestion function runs');
   $('.js-feedback').on('click', '.next-question', function() {
     console.log('Next Question Clicked');
     if (STORE.currentQuestion < QUESTIONS.length - 1) {
@@ -80,6 +82,7 @@ const updateQuestion = function() {
       generator.generateQuestionNumber();
       generator.generateQuestion();
       generator.generateAnswers();
+      console.log(STORE.currentQuestion);
     } else {
       STORE.currentView = 'results';
       render();
@@ -90,6 +93,7 @@ const updateQuestion = function() {
 const startOver = function() {
   $('.js-results').on('click', function() {
     STORE.userScore = null;
+    STORE.currentQuestion = null;
     handleStart();
   });
 };
@@ -135,7 +139,7 @@ function renderQuiz() {
   generator.generateQuestion();
   generator.generateAnswers();
   generator.generateScore();
-  updateQuestion();
+  
   
     
 }
@@ -146,6 +150,7 @@ $(function() {
   $('.intro').on('click', '.js-start-button', handleStart);
   $('.js-quiz-form').on('submit', '#js-option-form', handleSubmission);
   startOver();
+  updateQuestion();
   // handleSubmission();
 });
 
