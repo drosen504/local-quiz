@@ -43,15 +43,14 @@ const STORE = {
 
 //Event Listeners/Handlers
 const handleStart = function() {
-    $('.intro').on('click', '.js-start-button', event => {
-        event.preventDefault();
-        console.log('handleStart ran');     
-        STORE.currentQuestion = 0;
-        STORE.currentView = 'question';
-        STORE.userScore = 0;
-        renderQuiz();
-        render();
-    });
+    // $('.intro').on('click', '.js-start-button', event => {
+    console.log('handleStart ran');     
+    STORE.currentQuestion = 0;
+    STORE.currentView = 'question';
+    STORE.userScore = 0;
+    renderQuiz();
+    render();
+    
 };
 
 const handleSubmission = function() {
@@ -92,10 +91,9 @@ const updateQuestion = function() {
         }
     });
 };
-
-//DOESN'T WORK YET*********************************
 const startOver = function() {
     $('.js-results').on('click', function() {
+        STORE.userScore = 0;
         handleStart();
     });
 };
@@ -118,12 +116,14 @@ const render = function() {
         $('.js-intro').hide();
         $('.js-feedback').hide();
         $('.js-results').hide();
+        $('.js-options').show();
     }
     else if (STORE.currentView === 'feedback'){
         $('.js-feedback').show();
         $('.js-intro').hide();
         $('.js-quiz-form').show();
         $('.js-results').hide();
+        $('.js-options').hide();
     }
     else if (STORE.currentView === 'results'){
         $('.js-results').show();
@@ -149,7 +149,7 @@ function generateQuestion() {
 
 function generateAnswers() {
     console.log('generateAnswers fired');
-    $('.options').html(`
+    $('.js-options').html(`
     <form id="js-option-form">
         <input type="radio" id="choice1" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[0]}" required></input>
         <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[0]}</label><br>
@@ -196,16 +196,21 @@ function renderQuiz() {
 //after DOM loads
 $(function() {
     render();
-    handleStart();
+    $('.intro').on('click', '.js-start-button', handleStart);
     handleSubmission();
 });
 
-// $(() => {
-//     render();
-  
-//     $('.js-intro, .js-outro').on('click', '.js-start', handleStart);
-//     $('.js-question').on('submit', handleSubmitAnswer);
-//     $('.js-question-feedback').on('click', '.js-continue', handleNextQuestion);
-// });
-  
+
+//Listeners:
+//Click on start button
+//Click 
+//Click on next button
+//Click on start over button (same as start)
+// $('.intro').on('click', '.js-start-button', handleStart);
+// $('.js-quiz-form').on('submit', '#js-option-form', handleSubmission);
+// $('.js-feedback').on('click', '.next-question', updateQuestion);
+// $('.js-results').on('click', handleStart);
+
+
+
 
