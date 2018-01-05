@@ -43,35 +43,31 @@ const STORE = {
 
 //Event Listeners/Handlers
 const handleStart = function() {
-  // $('.intro').on('click', '.js-start-button', event => {
   console.log('handleStart ran');     
   STORE.currentQuestion = 0;
   STORE.currentView = 'question';
   STORE.userScore = 0;
   renderQuiz();
   render();
-    
 };
 
 const handleSubmission = function() {
-  $('.js-quiz-form').on('submit', '#js-option-form', event => {
-    event.preventDefault();
-    const selection = $('input:checked').val();
-    console.log(`user chose ${selection}`);
-    STORE.userAnswer = selection;
+  event.preventDefault();
+  const selection = $('input:checked').val();
+  console.log(`user chose ${selection}`);
+  STORE.userAnswer = selection;
 
-    if (STORE.userAnswer === QUESTIONS[STORE.currentQuestion].correctAnswer) {
-      STORE.feedback = 'That is correct!';
-      STORE.userScore++;
-    }
-    else {
-      STORE.feedback = `Sorry. The correct answer was: ${QUESTIONS[STORE.currentQuestion].correctAnswer}`;
-    }
-    STORE.currentView = 'feedback';
-    generator.generateFeedback();
-    generator.generateScore();
-    render();
-  });
+  if (STORE.userAnswer === QUESTIONS[STORE.currentQuestion].correctAnswer) {
+    STORE.feedback = 'That is correct!';
+    STORE.userScore++;
+  }
+  else {
+    STORE.feedback = `Sorry. The correct answer was: ${QUESTIONS[STORE.currentQuestion].correctAnswer}`;
+  }
+  STORE.currentView = 'feedback';
+  generator.generateFeedback();
+  generator.generateScore();
+  render();
 };
 
 const updateQuestion = function() {
@@ -93,7 +89,7 @@ const updateQuestion = function() {
 };
 const startOver = function() {
   $('.js-results').on('click', function() {
-    STORE.userScore = 0;
+    STORE.userScore = null;
     handleStart();
   });
 };
@@ -102,7 +98,6 @@ const startOver = function() {
 //Render-related Functions
 
 const render = function() {
-  // hideClasses();
   console.log('renderer ran!');
 
   if (STORE.currentView === 'start'){
@@ -139,15 +134,19 @@ function renderQuiz() {
   generator.generateQuestionNumber();
   generator.generateQuestion();
   generator.generateAnswers();
+  generator.generateScore();
   updateQuestion();
-  startOver();
+  
     
 }
 //after DOM loads
 $(function() {
+  console.log('just testing');
   render();
   $('.intro').on('click', '.js-start-button', handleStart);
-  handleSubmission();
+  $('.js-quiz-form').on('submit', '#js-option-form', handleSubmission);
+  startOver();
+  // handleSubmission();
 });
 
 
