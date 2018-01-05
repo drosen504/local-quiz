@@ -82,7 +82,7 @@ const updateQuestion = function() {
       STORE.currentView = 'question';
       render();
       generator.generateQuestionNumber();
-      generateQuestion();
+      generator.generateQuestion();
       generateAnswers();
     } else {
       STORE.currentView = 'results';
@@ -134,14 +134,6 @@ const render = function() {
            
 };
 
-
-function generateQuestion() {
-  console.log('generateQuestions firing');
-  $('.question').html(`
-    ${QUESTIONS[STORE.currentQuestion].text}<br>
-    `);
-}
-
 function generateAnswers() {
   console.log('generateAnswers fired');
   $('.js-options').html(`
@@ -182,7 +174,7 @@ const generateResults = function() {
 function renderQuiz() {
   console.log('renderQuiz ran');
   generator.generateQuestionNumber();
-  generateQuestion();
+  generator.generateQuestion();
   generateAnswers();
   updateQuestion();
   startOver();
