@@ -36,7 +36,13 @@ const generator = function() {
       $('.correct-tally').html(`
         <p>Number correct: ${STORE.userScore}</p>`);
     },
-    
+    generateResults: function() {
+      $('.js-results').html(`
+        <h2>You got ${STORE.userScore} out of 5 right!</h2>
+        <p>Try again?</p>
+        <button class="start js-start-button">Yes, Try Again!</button>
+        `);
+    },
   };
 }();
 

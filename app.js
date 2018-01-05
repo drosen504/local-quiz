@@ -87,7 +87,7 @@ const updateQuestion = function() {
     } else {
       STORE.currentView = 'results';
       render();
-      generateResults();
+      generator.generateResults();
     }
   });
 };
@@ -133,19 +133,6 @@ const render = function() {
   }
            
 };
-
-
-
-
-
-const generateResults = function() {
-  $('.js-results').html(`
-    <h2>You got ${STORE.userScore} out of 5 right!</h2>
-    <p>Try again?</p>
-    <button class="start js-start-button">Yes, Try Again!</button>
-    `);
-};
-
 
 function renderQuiz() {
   console.log('renderQuiz ran');
