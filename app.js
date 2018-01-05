@@ -90,15 +90,7 @@ const updateQuestion = function() {
   });
 };
 
-// const startOver = function() {
-//   console.log('startOver function ran');
-//   $('.js-results').on('click', function() {
-//     STORE.userScore = null;
-//     STORE.currentQuestion = null;
-//     handleStart();
-//   });
-// };
-    
+  
 //////////////Render-related Functions
 
 const render = function() {
@@ -147,7 +139,5 @@ $(function() {
   $('.intro, .results').on('click', '.js-start-button', handleStart);
   $('.js-quiz-form').on('submit', '#js-option-form', handleSubmission);
   updateQuestion();
-  // startOver();
-
 });
 
