@@ -41,14 +41,14 @@ const STORE = {
   userScore: 0,
 };
 
-//Event Listeners/Handlers
+///////////////Event Handlers
 const handleStart = function() {
   console.log('handleStart ran');     
   STORE.currentQuestion = 0;
   STORE.currentView = 'question';
   STORE.userScore = 0;
-  console.log(STORE.currentQuestion);
-  renderQuiz();
+  console.log(`after handleStart, we're on question ${STORE.currentQuestion}`);
+  renderQuizHtml();
   render();
 };
 
@@ -72,7 +72,6 @@ const handleSubmission = function() {
 };
 
 const updateQuestion = function() {
-  console.log('updateQuestion function runs');
   $('.js-feedback').on('click', '.next-question', function() {
     console.log('Next Question Clicked');
     if (STORE.currentQuestion < QUESTIONS.length - 1) {
@@ -82,7 +81,7 @@ const updateQuestion = function() {
       generator.generateQuestionNumber();
       generator.generateQuestion();
       generator.generateAnswers();
-      console.log(STORE.currentQuestion);
+      console.log(`after updateQuestion, we're on question ${STORE.currentQuestion}`);
     } else {
       STORE.currentView = 'results';
       render();
@@ -90,19 +89,20 @@ const updateQuestion = function() {
     }
   });
 };
-const startOver = function() {
-  $('.js-results').on('click', function() {
-    STORE.userScore = null;
-    STORE.currentQuestion = null;
-    handleStart();
-  });
-};
-    
 
-//Render-related Functions
+// const startOver = function() {
+//   console.log('startOver function ran');
+//   $('.js-results').on('click', function() {
+//     STORE.userScore = null;
+//     STORE.currentQuestion = null;
+//     handleStart();
+//   });
+// };
+    
+//////////////Render-related Functions
 
 const render = function() {
-  console.log('renderer ran!');
+  console.log('HTML selectors shown/hidden');
 
   if (STORE.currentView === 'start'){
     $('.js-intro').show();
@@ -133,38 +133,21 @@ const render = function() {
            
 };
 
-function renderQuiz() {
-  console.log('renderQuiz ran');
+function renderQuizHtml() {
+  console.log('renderQuizHtml ran');
   generator.generateQuestionNumber();
   generator.generateQuestion();
   generator.generateAnswers();
   generator.generateScore();
-  
-  
     
 }
 //after DOM loads
 $(function() {
-  console.log('just testing');
   render();
-  $('.intro').on('click', '.js-start-button', handleStart);
+  $('.intro, .results').on('click', '.js-start-button', handleStart);
   $('.js-quiz-form').on('submit', '#js-option-form', handleSubmission);
-  startOver();
   updateQuestion();
-  // handleSubmission();
+  // startOver();
+
 });
-
-
-//Listeners:
-//Click on start button
-//Click 
-//Click on next button
-//Click on start over button (same as start)
-// $('.intro').on('click', '.js-start-button', handleStart);
-// $('.js-quiz-form').on('submit', '#js-option-form', handleSubmission);
-// $('.js-feedback').on('click', '.next-question', updateQuestion);
-// $('.js-results').on('click', handleStart);
-
-
-
 
