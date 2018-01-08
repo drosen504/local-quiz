@@ -26,14 +26,14 @@ const generator = function() {
         <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[3]}</label></li>
       </ul>
         <br>
-        <input id="submit-button" type="submit" name="Submit" value="Submit!"></input>
+        <input id="submit-button" type="submit" name="Submit" role="button" value="Submit!"></input>
       
     </form>`);
     },
     generateFeedback: function() {
       $('.feedback').html(`
       <p>${STORE.feedback}</p>
-      <button class="next-question">Next!</button>`);
+      <button class="next-question" role="button">Next!</button>`);
     },
     generateScore: function() {
       $('#correct-tally').html(`
@@ -43,7 +43,7 @@ const generator = function() {
       $('.js-results').html(`
         <h2>You got ${STORE.userScore} out of 5 right!</h2>
         <p>Try again?</p>
-        <button class="start js-start-button">Yes, Try Again!</button>
+        <button class="start js-start-button" role="button">Yes, Try Again!</button>
         `);
     },
   };

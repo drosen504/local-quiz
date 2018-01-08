@@ -4,8 +4,8 @@
 }
 
 :focus {
-  outline-color: rgba(235, 16, 16, 0.993);
-  outline-style: outset;
+  outline-color: orange;
+  outline-style: ridge;
 } 
 
 body {
@@ -21,6 +21,7 @@ body {
 .question {
   font-size: 18px;
   padding-left: 5%;
+  padding-right: 5%;
 }
 
 .js-quiz-form {
