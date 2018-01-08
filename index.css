@@ -3,6 +3,11 @@
   font-family: 'PT Sans', sans-serif;
 }
 
+:focus {
+  outline-color: rgba(235, 16, 16, 0.993);
+  outline-style: outset;
+} 
+
 body {
   background: url("http://playfusionlax.com/wp-content/uploads/2013/06/Grey-website-background.jpg") repeat;
   color: white;
@@ -36,7 +41,6 @@ ul {
   text-align: left;
   padding-left: 15px;
   padding-right: 15px;
-
 }
 
 #correct-tally {
@@ -49,8 +53,6 @@ ul {
   font-weight: bold;
   font-size: 20px;
 }
-
-
 
 .results {
     display: none;
