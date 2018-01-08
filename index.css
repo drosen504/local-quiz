@@ -13,21 +13,30 @@ body {
     font-size: 40px;
     color: yellowgreen;
 }
+.question {
+  font-size: 18px;
+  padding-left: 5%;
+}
 
 .js-quiz-form {
+  display: inline-block;
+  min-width: 20%;
   margin: auto;
-  border: 2px yellowgreen;
   border-radius: 20px;
   background-color: rgb(31, 122, 182);
-  width: 20%;
+  width: auto;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.options {
+ul {
+  font-size: 18px;
+  list-style-type: none;
   display: inline-block; 
   text-align: left;
-  margin-left: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+
 }
 
 #correct-tally {
@@ -41,9 +50,7 @@ body {
   font-size: 20px;
 }
 
-#submit-button {
-  margin-left: 10px;
-}
+
 
 .results {
     display: none;

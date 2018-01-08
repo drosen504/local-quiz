@@ -8,23 +8,26 @@ const generator = function() {
       `);
     },
     generateQuestion: function() {
-      $('.question').html(`
+      $('.question').html(` 
       ${QUESTIONS[STORE.currentQuestion].text}<br>
       `);
     },
     generateAnswers: function() {
       $('.js-options').html(`
     <form id="js-option-form">
-        <input type="radio" id="choice1" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[0]}" required></input>
-        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[0]}</label><br>
-        <input type="radio" id="choice2" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[1]}"></input>
-        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[1]}</label><br>
-        <input type="radio" id="choice3" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[2]}"></input>
-        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[2]}</label><br>
-        <input type="radio" id="choice4" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[3]}"></input>
-        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[3]}</label><br>
+      <ul id="answer-choices" tabindex="-1" role="radiogroup" aria-labelledby="answer choices">
+        <li><input type="radio" id="choice1" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[0]}" required></input>
+        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[0]}</label></li>
+        <li><input type="radio" id="choice2" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[1]}"></input>
+        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[1]}</label></li>
+        <li><input type="radio" id="choice3" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[2]}"></input>
+        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[2]}</label></li>
+        <li><input type="radio" id="choice4" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[3]}"></input>
+        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[3]}</label></li>
+      </ul>
         <br>
         <input id="submit-button" type="submit" name="Submit" value="Submit!"></input>
+      
     </form>`);
     },
     generateFeedback: function() {
