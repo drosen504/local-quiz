@@ -27,6 +27,7 @@ body {
 .options {
   display: inline-block; 
   text-align: left;
+  margin-left: 30px;
 }
 
 #correct-tally {
@@ -34,9 +35,14 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
+
 .feedback {
   font-weight: bold;
   font-size: 20px;
+}
+
+#submit-button {
+  margin-left: 10px;
 }
 
 .results {
