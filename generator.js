@@ -15,7 +15,7 @@ const generator = function() {
     generateAnswers: function() {
       $('.js-options').html(`
     <form id="js-option-form">
-      <ul id="answer-choices" tabindex="-1" role="radiogroup" aria-labelledby="answer choices">
+      <ul id="answer-choices" role="radiogroup" aria-labelledby="answer choices">
         <li><input type="radio" id="choice1" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[0]}" required></input>
         <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[0]}</label></li>
         <li><input type="radio" id="choice2" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[1]}"></input>
