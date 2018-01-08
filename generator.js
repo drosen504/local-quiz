@@ -33,7 +33,7 @@ const generator = function() {
       <button class="next-question">Next!</button>`);
     },
     generateScore: function() {
-      $('.correct-tally').html(`
+      $('#correct-tally').html(`
         <p>Number correct: ${STORE.userScore}</p>`);
     },
     generateResults: function() {

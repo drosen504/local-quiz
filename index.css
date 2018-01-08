@@ -1,5 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: url("http://playfusionlax.com/wp-content/uploads/2013/06/Grey-website-background.jpg") repeat;
+  color: white;
+  text-align: center;
+}
+
 .title {
     font-size: 40px;
+    color: yellowgreen;
+}
+
+.js-quiz-form {
+  margin: auto;
+  border: 2px yellowgreen;
+  background-color: green;
+  width: 20%;
+
 }
 
 .results {
