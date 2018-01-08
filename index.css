@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'PT Sans', sans-serif;
 }
 
 body {
@@ -16,9 +17,26 @@ body {
 .js-quiz-form {
   margin: auto;
   border: 2px yellowgreen;
-  background-color: green;
+  border-radius: 20px;
+  background-color: rgb(31, 122, 182);
   width: 20%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
+.options {
+  display: inline-block; 
+  text-align: left;
+}
+
+#correct-tally {
+  color: yellowgreen;
+  font-size: 18px;
+  font-weight: bold;
+}
+.feedback {
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .results {

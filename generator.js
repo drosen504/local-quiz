@@ -24,7 +24,7 @@ const generator = function() {
         <input type="radio" id="choice4" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[3]}"></input>
         <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[3]}</label><br>
         <br>
-        <input type="submit" name="Submit" value="Submit!"></input>
+        <input id="submit-button" type="submit" name="Submit" value="Submit!"></input>
     </form>`);
     },
     generateFeedback: function() {
