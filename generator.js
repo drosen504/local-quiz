@@ -46,6 +46,45 @@ const generator = function() {
         <button class="start js-start-button" role="button">Yes, Try Again!</button>
         `);
     },
+    render: function() {
+      console.log('HTML selectors shown/hidden');
+    
+      if (STORE.currentView === 'start'){
+        $('.js-intro').show();
+        $('.js-quiz-form').hide();
+        $('.js-feedback').hide();
+        $('.js-results').hide();
+      }
+      else if (STORE.currentView === 'question'){
+        $('.js-quiz-form').show();
+        $('.js-intro').hide();
+        $('.js-feedback').hide();
+        $('.js-results').hide();
+        $('.js-options').show();
+      }
+      else if (STORE.currentView === 'feedback'){
+        $('.js-feedback').show();
+        $('.js-intro').hide();
+        $('.js-quiz-form').show();
+        $('.js-results').hide();
+        $('.js-options').hide();
+      }
+      else if (STORE.currentView === 'results'){
+        $('.js-results').show();
+        $('.js-intro').hide();
+        $('.js-quiz-form').hide();
+        $('.js-feedback').hide();
+      }
+               
+    },
+    renderQuizHtml: function() {
+      console.log('renderQuizHtml ran');
+      this.generateQuestionNumber();
+      this.generateQuestion();
+      this.generateAnswers();
+      this.generateScore();
+    }
+
   };
 }();
 
