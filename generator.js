@@ -15,18 +15,22 @@ const generator = function() {
     generateAnswers: function() {
       $('.js-options').html(`
     <form id="js-option-form">
-      <ul id="answer-choices" role="radiogroup" aria-labelledby="answer choices">
-        <li><input type="radio" id="choice1" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[0]}" required></input>
-        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[0]}</label></li>
-        <li><input type="radio" id="choice2" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[1]}"></input>
-        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[1]}</label></li>
-        <li><input type="radio" id="choice3" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[2]}"></input>
-        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[2]}</label></li>
-        <li><input type="radio" id="choice4" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[3]}"></input>
-        <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[3]}</label></li>
-      </ul>
+    <fieldset name="answer-choices">
+      <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[0]}
+      <input type="radio" id="choice1" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[0]}" required></input>
+      </label><br>
+      <label for="choice2">${QUESTIONS[STORE.currentQuestion].options[1]}
+      <input type="radio" id="choice2" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[1]}" required></input>
+      </label><br>
+      <label for="choice3">${QUESTIONS[STORE.currentQuestion].options[2]}
+      <input type="radio" id="choice3" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[2]}" required></input>
+      </label><br>
+      <label for="choice4">${QUESTIONS[STORE.currentQuestion].options[3]}
+      <input type="radio" id="choice4" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[3]}" required></input>
+      </label>
+     </fieldset>
         <br>
-        <input id="submit-button" type="submit" name="Submit" role="button" value="Submit!"></input>
+    <input id="submit-button" type="submit" name="Submit" role="button" value="Submit!"></input>
       
     </form>`);
     },
