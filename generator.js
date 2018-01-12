@@ -16,18 +16,14 @@ const generator = function() {
       $('.js-options').html(`
     <form id="js-option-form">
     <fieldset name="answer-choices">
-      <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[0]}
       <input type="radio" id="choice1" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[0]}" required></input>
-      </label><br>
-      <label for="choice2">${QUESTIONS[STORE.currentQuestion].options[1]}
+      <label for="choice1">${QUESTIONS[STORE.currentQuestion].options[0]}</label><br>
       <input type="radio" id="choice2" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[1]}" required></input>
-      </label><br>
-      <label for="choice3">${QUESTIONS[STORE.currentQuestion].options[2]}
+      <label for="choice2">${QUESTIONS[STORE.currentQuestion].options[1]}</label><br>
       <input type="radio" id="choice3" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[2]}" required></input>
-      </label><br>
-      <label for="choice4">${QUESTIONS[STORE.currentQuestion].options[3]}
+      <label for="choice3">${QUESTIONS[STORE.currentQuestion].options[2]}</label><br>
       <input type="radio" id="choice4" name="answer" value="${QUESTIONS[STORE.currentQuestion].options[3]}" required></input>
-      </label>
+      <label for="choice4">${QUESTIONS[STORE.currentQuestion].options[3]}</label>
      </fieldset>
         <br>
     <input id="submit-button" type="submit" name="Submit" role="button" value="Submit!"></input>
